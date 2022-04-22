@@ -2,12 +2,12 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
 
 #define SOUND_VELOCITY 0.034
 
 const char* ssid = "TB-0001";
 const char* password = "Not Your Bot!";
+
 const int IN1 = 12;
 const int IN2 = 14;
 const int IN3 = 0;
@@ -21,6 +21,8 @@ long duration;
 float distanceCm;
 int speed = 200;
 int motion = 1;
+
+//  TODO: implement SSL for API connections
 
 ESP8266WebServer server(80);
 
@@ -114,6 +116,7 @@ void read_distance(){
   // Clears the trigPin
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
+
   // Sets the trigPin on HIGH state for 10 micro seconds
   digitalWrite(trigPin, HIGH);
   delay(50);
